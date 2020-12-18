@@ -1,0 +1,21 @@
+.create-artikel-page {
+  padding-top: 40px;
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  .button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .button-save {
+      width: 200px;
+      margin-left: auto;
+      margin-right: 0px;
+    }
+  }
+}

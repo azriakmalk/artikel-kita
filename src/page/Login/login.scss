@@ -1,0 +1,19 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  height: 100vh;
+  .container {
+    width: 480px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    .title-login {
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+}

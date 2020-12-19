@@ -43,19 +43,28 @@ export const PostLogin = ({email,password})=>async (dispatch)=>{
     }
 }
 
-export const PostArtikel = ({title,body,image,author})=>async(dispatch)=>{
+export const PostArtikel = ({title,body,image,author})=> async (dispatch)=>{
+
     const fd = new FormData();  
-        fd.append('file',image)
+        fd.append('image',image)
         fd.append('title',title)
         fd.append('body',body)
-        fd.append('author',author)  
+        fd.append('author[uid]',author.uid)
+        fd.append('author[name]',author.name)  
         
-    try{                
-        await Axios.post(`${API}/artikel`,fd,{
-            headers: {
-                'Access-Control-Allow-Origin' : '*',
-            }
+        Axios.post(`${API}/artikel`,fd)
+        .then(res=>{
+            toast.success("Artikel berhasil ditambahkan!")        
+            setTimeout(()=>{
+                window.location = '/'
+            },1000)
+            dispatch({type:actionType.CREATE_ARTIKEL_SUCCESS})
         })
+        .catch(err=>{
+            console.log("ERROR : ",err)
+        })
+    try{                
+        await Axios.post(`${API}/artikel`,fd)
         toast.success("Artikel berhasil ditambahkan!")        
         setTimeout(()=>{
             window.location = '/'

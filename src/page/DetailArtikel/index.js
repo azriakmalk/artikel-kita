@@ -14,7 +14,7 @@ const DetailArtikel = () => {
         const {author,body,date,image,title} = state.dartikel
         return (
             <div className="detail-artikel-page">
-                <img className="img-cover" src={image} alt="gedung"/>
+                <img className="img-cover" src={image.url} alt="gedung"/>
         <p className="detail-title">{title}</p>
         <p className="detail-author">{author} - {date.substr(0,10)}</p>
                 <p className="detail-body">{body}</p>

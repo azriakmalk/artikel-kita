@@ -49,8 +49,13 @@ export const PostArtikel = ({title,body,image,author})=>async(dispatch)=>{
         fd.append('title',title)
         fd.append('body',body)
         fd.append('author',author)  
+        
     try{                
-        await Axios.post(`${API}/artikel`,fd)
+        await Axios.post(`${API}/artikel`,fd,{
+            headers: {
+                'Access-Control-Allow-Origin' : '*',
+            }
+        })
         toast.success("Artikel berhasil ditambahkan!")        
         setTimeout(()=>{
             window.location = '/'

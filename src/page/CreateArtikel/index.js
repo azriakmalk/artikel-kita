@@ -8,6 +8,7 @@ import ReactLoading from 'react-loading'
 import './createartikel.scss'
 import { Store } from '../../config/Redux/store';
 import { actionType } from '../../config/Redux/actionType';
+import { NoImage } from '../../asset/index'
 
 
 const CreateArtikel = () => {
@@ -56,6 +57,8 @@ const CreateArtikel = () => {
         <div className="create-artikel-page">
             <p className="title">Create Artikel</p>           
             <Input label="Title" id="title" onChange={(e)=>onChange(e)}/>
+            <Gap height={20}/>
+            <img id="output" className="preview" src={NoImage} alt="preview"/>
             <Upload onChange={(e)=>uploadGambar(e)} accept="image/png, image/jpeg"/>
             <Textarea id='body' onChange={(e)=>onChange(e)}/>
             <Gap height={20}/>

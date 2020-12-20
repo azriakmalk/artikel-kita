@@ -21,6 +21,7 @@
   }
 
   .modal {
+    overflow: scroll;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -77,6 +78,7 @@
   }
 
   .modal .content {
+    overflow: scroll;
     position: absolute;
     width: 70%;
     height: 100%;

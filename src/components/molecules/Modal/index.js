@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { deleteArtikel } from '../../../config/Redux/deleteApi'
 import { putArtikel } from '../../../config/Redux/putApi'
-import { Button, Gap, Input, Textarea } from '../../atoms'
+import { Button, Gap, Input, Textarea, Upload } from '../../atoms'
 import "./modal.scss"
 
 const Modal = (props) => {
@@ -21,6 +21,24 @@ const Modal = (props) => {
             setData(state.dsartikel)
         }
     },[state.dsartikel])
+
+    const uploadGambar = (e)=>{
+        let gambar = {...data}
+        gambar['imageFile'] = e.target.files[0]
+        gambar['author']={
+            uid:state.payload._id,
+            name:state.payload.name
+        }
+        setData(gambar)   
+        let reader = new FileReader();
+        reader.onload= function(){
+            let output = document.getElementById("output")
+            output.src =reader.result;
+            }
+        reader.readAsDataURL(e.target.files[0])
+        
+    }
+
     return (
         <div className="card">
             <div className="content">
@@ -33,7 +51,9 @@ const Modal = (props) => {
                         <div className="top">
                             <h2>Artikel Saya </h2>
                             <div>
-                                <img className="img-artikel-item" src={image} alt="gambar"/>
+                                
+                                <img id="output" className="img-artikel-item" src={image.url} alt="preview"/>
+                                <Upload onChange={(e)=>uploadGambar(e)} accept="image/png, image/jpeg"/>
                                 <label className="modal-label close-btn"><input type="radio" name="modal" value="close" className="modal-radio"/></label>
                                 <Input placeholder="Title" value={title} onChange={(e)=>{setData({...data,title:e.target.value})}}/>
                                 <Gap height={20}/>

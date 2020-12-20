@@ -46,7 +46,7 @@ export const PostLogin = ({email,password})=>async (dispatch)=>{
 export const PostArtikel = ({title,body,image,author})=> async (dispatch)=>{
 
     const fd = new FormData();  
-        fd.append('image',image)
+        fd.append('imageFile',image)
         fd.append('title',title)
         fd.append('body',body)
         fd.append('author[uid]',author.uid)

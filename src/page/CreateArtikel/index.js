@@ -43,10 +43,14 @@ const CreateArtikel = () => {
         setData(dataa)
     }
 
-    const submitArtikel = async ()=>{          
+    const submitArtikel = async ()=>{        
         const {title,body,image} = data
         if(!title ||!body||!image){
             toast.error("Harap isi semua kolom")
+        }else if(title.length<6){
+            toast.error("Panjang judul minimal 6 karakter")
+        }else if(body.length<6){
+            toast.error("Panjang body minimal 6 karakter")
         }else{
             Store.dispatch({type:actionType.CREATE_ARTIKEL_PROCESS})
             Store.dispatch(PostArtikel(data))

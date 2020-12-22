@@ -38,6 +38,18 @@ const Modal = (props) => {
         reader.readAsDataURL(e.target.files[0])
         
     }
+    const handleUpdate = ()=>{
+
+        if(!title ||!body||!image){
+            toast.error("Harap isi semua kolom")
+        }else if(title.length<6){
+            toast.error("Panjang judul minimal 6 karakter")
+        }else if(body.length<6){
+            toast.error("Panjang body minimal 6 karakter")
+        }else{
+            putArtikel(_id,data)
+        }
+    }
 
     return (
         <div className="card">
@@ -60,7 +72,7 @@ const Modal = (props) => {
                                 <Textarea value={body} onChange={(e)=>{setData({...data,body:e.target.value})}}/>
                                 <div className="btn-wrap">
                                     <div className="btn">
-                                    <Button title="Update" onClick={()=>putArtikel(_id,data)}/>
+                                    <Button title="Update" onClick={()=>handleUpdate()}/>
                                     </div>
                                     <div className="btn">
                                     <Button title="Hapus" onClick={()=>deleteArtikel(_id)} style={{backgroundColor:'red'}}/>

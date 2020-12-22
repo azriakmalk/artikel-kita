@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { toast, ToastContainer } from 'react-toastify'
 import { deleteArtikel } from '../../../config/Redux/deleteApi'
 import { putArtikel } from '../../../config/Redux/putApi'
 import { Button, Gap, Input, Textarea, Upload } from '../../atoms'
@@ -85,6 +86,7 @@ const Modal = (props) => {
                 </div>
 
             </div>
+            <ToastContainer/>
         </div>
     )
 }

@@ -12,8 +12,12 @@ const Header = () => {
     if(!state.payload){
         return(
             <div className="header-wrapper">
-                <p className="logo-header" onClick={()=>history.push('/')}>Artikel Kita</p>                        
-                <p onClick={()=>{window.location='/login'}}className="menu-header">Login</p>
+                <p className="logo-header" onClick={()=>history.push('/')}>Artikel Kita</p> 
+                <div className="menu-wrapper">
+                    <p onClick={()=>{window.location='/login'}}className="menu-header">Tulis Artikel</p>
+                    <Gap width={10}/>
+                    <p onClick={()=>{window.location='/login'}}className="menu-header">Login</p>
+                </div>                       
                 </div>
         )
     }else{    
@@ -22,6 +26,8 @@ const Header = () => {
                 <p className="logo-header" onClick={()=>history.push('/')}>Artikel Kita</p>                        
                 <div className="menu-wrapper">
                         <p className="menu-nama">{state.payload.name}</p>
+                        <Gap width={10}/>
+                        <p onClick={()=>{window.location='/create-artikel'}}className="menu-header">Tulis Artikel</p>
                         <Gap width={10}/>
                         <p className="menu-header" onClick={()=>{history.push('/artikel-saya')}}>Artikel Saya</p>
                         <Gap width={10}/>

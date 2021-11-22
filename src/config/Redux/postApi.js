@@ -60,11 +60,7 @@ export const PostArtikel = ({title,body,image,author})=> async (dispatch)=>{
         },1000)
         dispatch({type:actionType.CREATE_ARTIKEL_SUCCESS})
     }catch(err){
-        toast.error(err)
-        // const errors = err.response.data.errors
-        //   if(errors){
-        //       errors.forEach(error=>toast.error(error.msg))
-        //   }
+        toast.error(err)        
           dispatch({type:actionType.CREATE_ARTIKEL_FAIL})
     }
 }
